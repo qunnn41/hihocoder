@@ -1,42 +1,30 @@
-#include <iostream>
-#include <algorithm>
-using namespace std;
-
-const string original_one = "marshtomp";
-const string new_one = "fjxmlhx";
-string replace_string(string str) {
-    string ss = str;
-//    transform(str.begin(), str.end(), str.begin(),(int (*) (int))tolower);
-
-    string::size_type pos(0);
-    bool flag = false;
-    while (true) {
-        if ( (pos = str.find(original_one)) != string::npos) {
-            str.replace(pos, original_one.length(), new_one);
-            flag = true;
-        } else {
-            break;
-        }
-    }
-    return flag ? str : ss;
-}
-
-int main() {
-    string str;
-    while (getline(cin, str)) {
-        unsigned long length = str.length();
-        unsigned long location_of_space[length];
-        int count_of_space = 0;
-        for (unsigned long i = 0; i < length - 1; ++i) {
-            if (str[i] == ' ') {
-                location_of_space[count_of_space ++] = i;
-            }
-        }
-        cout << replace_string(str.substr(0, location_of_space[0] + 1));
-        for (int i = 0; i < count_of_space; ++i) {
-            cout << replace_string(str.substr(location_of_space[i] + 1, location_of_space[i + 1] - location_of_space[i]));
-        }
-
-        cout << endl;
-    }
-}
+//#include <iostream>
+//#include <string.h>
+//using namespace std;
+//
+//int main() {
+//    char s[200];
+//    while (cin.getline(s,200)) {
+//        char old_string[] = "marshtomp";
+//        char new_string[] = "fjxmlhx";
+//        unsigned long string_len = strlen(s);
+//        unsigned long old_len = strlen(old_string);
+//        unsigned long new_len = strlen(new_string);
+//
+//        for (unsigned long i = 0; i < string_len; i++) {
+//            int j = 0;
+//            unsigned long k = i;
+//            while (s[k] == old_string[j] || s[k] == (old_string[j] - 32)) {
+//                k++;
+//                j++;
+//                if (j == old_len) {
+//                    unsigned long q = i;
+//                    strncpy(s + i, new_string, new_len);
+//                    strncpy(s + i + new_len, s + i + old_len, string_len - i - old_len);
+//                    strncpy(s + string_len - old_len + new_len, "", old_len - new_len);
+//                }
+//            }
+//        }
+//        cout << s << endl;
+//    }
+//}
