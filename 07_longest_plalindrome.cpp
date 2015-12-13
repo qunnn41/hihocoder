@@ -1,33 +1,44 @@
-#include <iostream>
-using namespace std;
-
-int expandFromCenter(string str, int c1, int c2) {
-    int l = c1, r = c2;
-    int n = (int) str.length();
-    while (l >= 0 && r <= n - 1 && str[l] == str[r]) {
-        l --;
-        r ++;
-    }
-
-    return r - l - 1;
-}
-int main() {
-    int n;
-    cin >> n;
-    string str;
-    while (n --) {
-        cin >> str;
-        int longest = 0;
-        int length = (int) str.length();
-        for (int i = 0; i < length; ++i) {
-            int p1 = expandFromCenter(str, i, i);
-            longest = longest > p1 ? longest : p1;
-            int p2 = expandFromCenter(str, i, i + 1);
-            longest = longest > p2 ? longest : p2;
-        }
-
-        cout << longest << endl;
-    }
-
-    return 0;
-}
+//#include <iostream>
+//using namespace std;
+//
+//string preProcess(string s) {
+//    int n = s.length();
+//    if (n == 0)
+//        return "^$";
+//    string ret = "^";
+//    for (int i = 0; i < n; ++i)
+//        ret += "#" + s.substr(i, 1);
+//    ret += "#$";
+//    return ret;
+//}
+//
+//int main() {
+//    int num;
+//    cin >> num;
+//    string str;
+//    while (num --) {
+//        cin >> str;
+//        string T = preProcess(str);
+//        int n = (int)T.length();
+//        int *P = new int[n];
+//        int C = 0, R = 0, longest = 0;
+//        for (int i = 1; i < n - 1; ++i) {
+//            int i_mirror = C - (i - C);
+//            P[i] = (R > i) ? min(R - i, P[i_mirror]) : 0;
+//
+//            while (T[i + 1 + P[i]] == T[i - 1 - P[i]])
+//                P[i]  ++;
+//
+//            if (P[i] > longest)
+//                longest = P[i];
+//            if (i + P[i] > R) {
+//                C = i;
+//                R = i + P[i];
+//            }
+//        }
+//
+//        cout << longest << endl;
+//    }
+//
+//    return 0;
+//}
